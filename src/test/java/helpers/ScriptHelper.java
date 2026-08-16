@@ -8,9 +8,6 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class ScriptHelper {
-    public static final String START_EMULATOR = "scripts/start-emulator.sh";
-    public static final String STOP_EMULATOR = "scripts/stop-emulator.sh";
-
     public static void execute(String scriptName) {
         step("Run script with name " + scriptName, () -> {
             String bash = SystemHelper.isWindows()
