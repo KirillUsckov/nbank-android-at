@@ -7,20 +7,13 @@ import java.io.File;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class ScriptHelper {
-
+public final class ScriptHelper {
     public static final String START_EMULATOR = "scripts/start-emulator.sh";
     public static final String STOP_EMULATOR = "scripts/stop-emulator.sh";
 
     public static void execute(String scriptName) {
         step("Run script with name " + scriptName, () -> {
-            var projectDir = System.getProperty("user.dir");
-
-            boolean isWindows = System.getProperty("os.name")
-                    .toLowerCase()
-                    .startsWith("windows");
-
-            String bash = isWindows
+            String bash = SystemHelper.isWindows()
                     ? "C:\\Program Files\\Git\\bin\\bash.exe"
                     : "bash";
 
@@ -29,7 +22,7 @@ public class ScriptHelper {
                     scriptName
             );
 
-            processBuilder.directory(new File(projectDir));
+            processBuilder.directory(new File(SystemHelper.getUserDir()));
 
             // Показываем stdout/stderr скрипта в консоли тестов
             processBuilder.inheritIO();

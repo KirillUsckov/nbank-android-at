@@ -23,14 +23,6 @@ public final class Config {
     }
 
     public static String getProperty(ConfigParams configParam) {
-        System.out.println("System property: "
-                + System.getProperty(configParam.getValue()));
-
-        System.out.println("Env property: "
-                + System.getenv(configParam.name()));
-
-        System.out.println("Properties file: "
-                + INSTANCE.properties.getProperty(configParam.getValue()));
         var property = System.getProperty(configParam.getValue());
         if (property != null && !property.isBlank()) {
             return property;
@@ -40,9 +32,5 @@ public final class Config {
             return property;
         }
         return INSTANCE.properties.getProperty(configParam.getValue());
-    }
-
-    public static long getLongProperty(ConfigParams configParam) {
-        return Long.parseLong(getProperty(configParam));
     }
 }

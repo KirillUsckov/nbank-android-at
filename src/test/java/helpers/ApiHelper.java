@@ -9,16 +9,13 @@ import io.restassured.RestAssured;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class ApiHelper {
+public final class ApiHelper {
     @Step("Check api health")
     public static void healthCheck() {
-        var backUrl = Config.getProperty(ConfigParams.BACKEND_URL);
-        var admin = Config.getProperty(ConfigParams.ADMIN_TOKEN);
-
         RestAssured.given()
-                .baseUri(backUrl)
+                .baseUri(Config.getProperty(ConfigParams.BACKEND_URL))
                 .header("accept", "*/*")
-                .header("Authorization", "Basic " + admin)
+                .header("Authorization", "Basic " + Config.getProperty(ConfigParams.ADMIN_TOKEN))
                 .when()
                 .get("/api/v1/admin/users")
                 .then()
