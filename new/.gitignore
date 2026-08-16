@@ -7,7 +7,7 @@ target/
 test-results/
 swagger-coverage-output/
 ### IntelliJ IDEA ###
-.idea/
+new/.idea/
 *.iws
 *.iml
 *.ipr
