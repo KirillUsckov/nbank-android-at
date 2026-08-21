@@ -1,9 +1,9 @@
-package helpers;
+package framework.helpers;
 
 import org.apache.http.HttpStatus;
 
-import confs.Config;
-import enums.ConfigParams;
+import framework.confs.Config;
+import framework.enums.ConfigParams;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import lombok.experimental.UtilityClass;

@@ -3,8 +3,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 group 'nbank-android-at'
@@ -17,6 +17,15 @@ def junitVersion = '5.8.2',
 
 repositories {
     mavenCentral()
+
+    maven {
+        url = uri("https://maven.pkg.github.com/KirillUsckov/test-data-generator")
+
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 dependencies {
@@ -26,8 +35,13 @@ dependencies {
     testImplementation "org.projectlombok:lombok:${lombokVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
     testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
     testImplementation "io.qameta.allure:allure-junit5:${allureVersion}"
+    testImplementation  "io.appium:java-client:10.1.1"
+    testImplementation  "com.codeborne:selenide:7.17.0"
+    testImplementation "ru.kduskov:test-data-generator:1.0.1"
+
 }
 
 test {

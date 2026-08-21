@@ -1,15 +1,28 @@
+import com.codeborne.selenide.Selenide;
+
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import constants.Scripts;
-import helpers.ApiHelper;
-import helpers.ScriptHelper;
+import framework.constants.Scripts;
+import framework.extensions.EmulatorDriverSetUpExtension;
+import framework.extensions.EmulatorDriverTearDownExtension;
+import framework.helpers.ApiHelper;
+import framework.helpers.ScriptHelper;
+import io.qameta.allure.Step;
 
+@ExtendWith({EmulatorDriverSetUpExtension.class, EmulatorDriverTearDownExtension.class})
 public abstract class BaseTest {
     @BeforeAll
     public static void setUp() {
         ApiHelper.healthCheck();
         ScriptHelper.execute(Scripts.START_EMULATOR);
+    }
+
+    public void stopDriver() {
+        Selenide.closeWebDriver();
     }
 
     @AfterAll
