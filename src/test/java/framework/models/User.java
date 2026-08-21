@@ -1,6 +1,6 @@
 package framework.models;
 
-import framework.constants.Regexes;
+import framework.constants.GenerationsRegexes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import ru.kduskov.enums.GenerationsRules;
 @NoArgsConstructor
 @Builder
 public class User {
-    @GeneratingRule(regex = Regexes.USERNAME)
+    @GeneratingRule(regex = GenerationsRegexes.USERNAME)
     private String username;
     @GeneratingRule(valueKey = GenerationsRules.PASSWORD, minLength = 8, maxLength = 128)
     private String password;

@@ -5,12 +5,10 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
-import java.util.random.RandomGenerator;
-
 import framework.annotations.CreateUser;
 import framework.helpers.ApiHelper;
 import framework.models.User;
-import ru.kduskov.generators.RandomData;
+import framework.models.body.CreateUserRequestBody;
 import ru.kduskov.generators.RequestDataGenerator;
 
 public class CreateUserParameterResolver implements ParameterResolver {
@@ -22,8 +20,12 @@ public class CreateUserParameterResolver implements ParameterResolver {
 
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        User user = RequestDataGenerator.generateFilledObject(User.class);
-        ApiHelper.createUser(user);
-        return user;
+        CreateUserRequestBody userRequest =
+                RequestDataGenerator.generateFilledObject(CreateUserRequestBody.class);
+        ApiHelper.createUser(userRequest);
+        return User.builder()
+                .username(userRequest.getUsername())
+                .password(userRequest.getPassword())
+                .build();
     }
 }
