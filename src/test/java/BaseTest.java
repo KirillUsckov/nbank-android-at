@@ -9,9 +9,8 @@ import framework.extensions.EmulatorDriverSetUpExtension;
 import framework.extensions.EmulatorDriverTearDownExtension;
 import framework.helpers.ApiHelper;
 import framework.helpers.ScriptHelper;
-import framework.resolvers.CreateUserParameterResolver;
 
-@ExtendWith({EmulatorDriverSetUpExtension.class, EmulatorDriverTearDownExtension.class, CreateUserParameterResolver.class})
+@ExtendWith({EmulatorDriverSetUpExtension.class, EmulatorDriverTearDownExtension.class})
 public abstract class BaseTest {
     @BeforeAll
     public static void setUp() {
