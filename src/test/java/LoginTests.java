@@ -13,6 +13,7 @@ import framework.screens.AdminPanelScreen;
 import framework.screens.DashboardScreen;
 import framework.screens.LoginScreen;
 import framework.screens.Toast;
+import testdata.AssertionMessages;
 
 public class LoginTests extends BaseTest {
     private final LoginScreen loginScreen = LoginScreen.get();
@@ -34,7 +35,7 @@ public class LoginTests extends BaseTest {
         toast.waitForClose();
 
         adminPanelScreen.waitForOpening();
-        Assertions.assertTrue(adminPanelScreen.isOpened(), "Admin panel screen wasn't opened");
+        Assertions.assertTrue(adminPanelScreen.isOpened(), AssertionMessages.ADMIN_PANEL_SCREEN_WAS_NOT_OPENED.getMessage());
     }
 
     @Test
@@ -49,7 +50,7 @@ public class LoginTests extends BaseTest {
         ToastAssertions.assertErrorToast(ErrorToasts.LOGIN_401, toastTitle, toastText);
         toast.waitForClose();
 
-        Assertions.assertTrue(loginScreen.isOpened(), "Login screen is not opened");
+        Assertions.assertTrue(loginScreen.isOpened(), AssertionMessages.LOGIN_SCREEN_WAS_NOT_OPENED.getMessage());
     }
 
     @Test
@@ -65,6 +66,6 @@ public class LoginTests extends BaseTest {
         toast.waitForClose();
 
         dashboardScreen.waitForOpening();
-        Assertions.assertTrue(dashboardScreen.isOpened(), "Dashboard screen wasn't opened");
+        Assertions.assertTrue(dashboardScreen.isOpened(), AssertionMessages.DASHBOARD_SCREEN_WAS_NOT_OPENED.getMessage());
     }
 }
