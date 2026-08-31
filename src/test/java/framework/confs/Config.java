@@ -1,10 +1,10 @@
-package confs;
+package framework.confs;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import enums.ConfigParams;
+import framework.enums.ConfigParams;
 
 public final class Config {
     private static final Config INSTANCE = new Config();
@@ -32,5 +32,9 @@ public final class Config {
             return property;
         }
         return INSTANCE.properties.getProperty(configParam.getValue());
+    }
+
+    public static long getLongProperty(ConfigParams configParam) {
+        return Long.parseLong(getProperty(configParam));
     }
 }

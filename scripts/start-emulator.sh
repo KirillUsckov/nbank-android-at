@@ -108,7 +108,6 @@ if [ -f "$SETTINGS_APK" ]; then
     adb -s emulator-5554 install -r "$SETTINGS_APK"
 
     echo -e "${YELLOW} Granting necessary permissions to Appium Settings...${NC}"
-    adb -s emulator-5554 shell pm grant io.appium.settings android.permission.WRITE_SECURE_SETTINGS
     adb -s emulator-5554 shell pm grant io.appium.settings android.permission.SET_ANIMATION_SCALE
     adb -s emulator-5554 shell pm grant io.appium.settings android.permission.CHANGE_CONFIGURATION
     adb -s emulator-5554 shell pm grant io.appium.settings android.permission.ACCESS_FINE_LOCATION
@@ -118,6 +117,7 @@ else
     echo -e "${RED} Appium Settings APK not found at $SETTINGS_APK${NC}"
 fi
 
-# Wait additional 5 seconds just to be safe
-echo -e "${YELLOW} Waiting an extra 5 seconds for stability...${NC}"
-sleep 2
+echo -e "${YELLOW} Waiting 5 seconds for stability"
+sleep 5
+
+echo -e "${GREEN} Appium installed and ready"

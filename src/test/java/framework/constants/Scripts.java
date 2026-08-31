@@ -1,4 +1,4 @@
-package constants;
+package framework.constants;
 
 public final class Scripts {
     public static final String START_EMULATOR = "scripts/start-emulator.sh";

@@ -1,4 +1,4 @@
-package enums;
+package framework.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,9 @@ public enum ConfigParams {
     VERSION("version"),
     APP_PACKAGE("app.package"),
     APP_ACTIVITY("app.activity"),
-    APPIUM_URL("appium.url");
+    APPIUM_URL("appium.url"),
+    APP_PATH("app.path"),
+    SELENIDE_TIMEOUT("selenide.timeout");
     @Getter
     private String value;
 }
