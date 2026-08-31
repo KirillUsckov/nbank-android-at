@@ -1,4 +1,6 @@
 .gradle/
+gradle
+.idea/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -7,7 +9,7 @@ target/
 test-results/
 swagger-coverage-output/
 ### IntelliJ IDEA ###
-.idea/
+new/.idea/
 *.iws
 *.iml
 *.ipr
